@@ -1,0 +1,44 @@
+TASK 2: PREDICTIVE ANALYSIS USING MACHINE LEARNING
+
+# Import required libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Load dataset
+# Dataset contains house size and price
+data = pd.read_csv("house_price.csv")
+
+# Display dataset
+print("Dataset Preview:")
+print(data.head())
+
+# Define independent variable (feature)
+# House size will be used to predict price
+X = data[['Size']]
+
+# Define dependent variable (target)
+y = data['Price']
+
+# Split dataset into training and testing sets
+# 80% training, 20% testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create Linear Regression model
+model = LinearRegression()
+
+# Train the model using training data
+model.fit(X_train, y_train)
+
+# Make predictions on test data
+predictions = model.predict(X_test)
+
+print("\nPredicted Prices:")
+print(predictions)
+
+# Evaluate model performance using Mean Squared Error
+mse = mean_squared_error(y_test, predictions)
+
+print("\nMean Squared Error:")
+print(mse)
