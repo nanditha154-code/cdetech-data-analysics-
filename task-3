@@ -1,0 +1,32 @@
+TASK 3: DASHBOARD DEVELOPMENT
+
+# Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load dataset
+data = pd.read_csv("sales_data.csv")
+
+# Show dataset preview
+print("Dataset Preview:")
+print(data.head())
+
+# Group data by category to calculate total sales
+sales_by_category = data.groupby("Category")["Sales"].sum()
+
+# Create a bar chart
+plt.figure()
+
+sales_by_category.plot(kind='bar')
+
+# Add chart title
+plt.title("Total Sales by Category")
+
+# Label x-axis
+plt.xlabel("Category")
+
+# Label y-axis
+plt.ylabel("Sales")
+
+# Display the chart
+plt.show()
