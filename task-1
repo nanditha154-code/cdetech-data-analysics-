@@ -1,0 +1,37 @@
+ TASK 1: BIG DATA ANALYSIS
+# In this task we analyze a dataset and extract insights.
+
+# Import required libraries
+import pandas as pd
+
+# Load dataset
+# sales_data.csv contains product sales information
+data = pd.read_csv("sales_data.csv")
+
+# Display first 5 rows of dataset
+# This helps us understand the structure of the data
+print("First 5 rows of the dataset:")
+print(data.head())
+
+# Display dataset information
+# Shows number of rows, columns, and data types
+print("\nDataset Information:")
+print(data.info())
+
+# Summary statistics
+# Shows mean, min, max etc for numerical columns
+print("\nStatistical Summary:")
+print(data.describe())
+
+# Grouping data by category
+# This helps analyze total sales per category
+sales_by_category = data.groupby("Category")["Sales"].sum()
+
+print("\nTotal Sales by Category:")
+print(sales_by_category)
+
+# Finding product with highest sales
+max_sales_product = data.loc[data["Sales"].idxmax()]
+
+print("\nProduct with Highest Sales:")
+print(max_sales_product)
